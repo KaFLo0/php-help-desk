@@ -16,6 +16,10 @@
 
 <body>
 
+  <?php
+    $var = 1; 
+  ?>
+
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a href="#top" class="navbar-brand">
