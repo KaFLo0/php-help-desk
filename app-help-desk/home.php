@@ -6,10 +6,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/app-help-desk/assets/logo.png">
+  <link rel="icon" href="assets/logo.png">
   <!-- Style -->
-  <link rel="stylesheet" href="/app-help-desk/style/bootstrap4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/app-help-desk/style/style.css">
+  <link rel="stylesheet" href="style/bootstrap4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/style.css">
 
   <title>App Help Desk</title>
 </head>
@@ -23,7 +23,7 @@
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a href="#top" class="navbar-brand">
-        <img src="/app-help-desk/assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
+        <img src="assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
         App Help Desk
       </a>
     </nav>
@@ -38,10 +38,10 @@
           <div class="card-body">
             <div class="row">
               <div class="col-6 d-flex justify-content-center">
-                <img src="/app-help-desk/assets/formulario_abrir_chamado.png" alt="Imagem do formulário para abrir um chamado">
+                <img src="assets/formulario_abrir_chamado.png" alt="Imagem do formulário para abrir um chamado">
               </div>
               <div class="col-6 d-flex justify-content-center">
-                <img src="/app-help-desk/assets/formulario_consultar_chamado.png" alt="Imagem do formulário para consultar um chamado">
+                <img src="assets/formulario_consultar_chamado.png" alt="Imagem do formulário para consultar um chamado">
               </div>
             </div>
           </div>

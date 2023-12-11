@@ -6,24 +6,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/app-help-desk/assets/logo.png">
+  <link rel="icon" href="assets/logo.png">
   <!-- Style -->
-  <link rel="stylesheet" href="/app-help-desk/style/bootstrap4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/app-help-desk/style/style.css">
+  <link rel="stylesheet" href="style/bootstrap4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/style.css">
 
   <title>App Help Desk</title>
 </head>
 
 <body>
 
-  <?php
-    $var = 1; 
-  ?>
-
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a href="#top" class="navbar-brand">
-        <img src="/app-help-desk/assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
+        <img src="assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
         App Help Desk
       </a>
     </nav>
@@ -36,14 +32,33 @@
         <div class="card">
           <div class="card-header">Login</div>
           <div class="card-body">
-            <form>
+            <form action="valida_login.php" method="post">
               <div class="form-group">
-                <input type="email" placeholder="E-mail" class="form-control">
+                <input id="form_input_1" class="form-control" name="email" required type="email" placeholder="E-mail">
               </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Senha">
+              <div class="form-group mb-0">
+                <input id="form_input_2" class="form-control mb-3" name="senha" required type="password" placeholder="Senha">
               </div>
-              <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+              <!-- Bloco condicional para tratamento caso o login seja negado ou ocorra algum erro -->
+              <?php
+                if(isset($_GET['login']) && $_GET['login'] == 'erro') {
+              ?>
+              <script>
+                // input1 e input2 vão mudar a classe dos dois inputs da página para ficar mais intuitivo ao usuário
+                const input1 = document.getElementById('form_input_1');
+                input1.className += ' is-invalid';
+                const input2 = document.getElementById('form_input_2');
+                input2.className = 'form-control is-invalid';
+
+                // Uma <div> é criada abaixo do input de `senha` para exibir ao usuário uma mensagem de erro
+                const input_feedback = document.createElement('div');
+                input_feedback.className = 'invalid-feedback mb-1';
+                input_feedback.innerHTML = 'Usuário ou senha inválido(s)';
+                input2.insertAdjacentElement('afterend', input_feedback);
+              </script>
+              <?php } ?>
+
+              <button class="btn btn-lg btn-info btn-block mt-0" type="submit">Entrar</button>
             </form>
           </div>
         </div>
