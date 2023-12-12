@@ -1,3 +1,6 @@
+<?php
+  define('MAIN_PATH', 'http://localhost/app-help-desk');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,10 +9,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="assets/logo.png">
+  <link rel="icon" href="<?= MAIN_PATH ?>/assets/logo.png">
   <!-- Style -->
-  <link rel="stylesheet" href="style/bootstrap4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="<?= MAIN_PATH ?>/style/bootstrap4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= MAIN_PATH ?>/style/style.css">
 
   <title>App Help Desk</title>
 </head>
@@ -19,22 +22,28 @@
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a href="#top" class="navbar-brand">
-        <img src="assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
+        <img src="<?= MAIN_PATH ?>/assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
         App Help Desk
       </a>
     </nav>
   </header>
 
   <div class="container">
+
+    <header class="row align-items-center justify-content-center flex-column">
+      <h1 class="display-1">Help Desk</h1>
+      <p class="lead">Faça o login para ter acesso aos recursos da página!</p>
+    </header>
+
     <div class="row">
       <div class="card-login">
 
         <div class="card">
           <div class="card-header">Login</div>
           <div class="card-body">
-            <form action="valida_login.php" method="post">
+            <form action="<?= MAIN_PATH ?>/valida_login.php" method="post">
               <div class="form-group">
-                <input id="form_input_1" class="form-control" name="email" required type="email" placeholder="E-mail">
+                <input id="form_input_1" class="form-control" name="email" required autocomplete="email" type="email" placeholder="E-mail">
               </div>
               <div class="form-group mb-0">
                 <input id="form_input_2" class="form-control mb-3" name="senha" required type="password" placeholder="Senha">
@@ -56,6 +65,11 @@
                 input_feedback.innerHTML = 'Usuário ou senha inválido(s)';
                 input2.insertAdjacentElement('afterend', input_feedback);
               </script>
+              <!-- Bloco condicional para caso o usuário tente acessar outras páginas antes de ter feito login -->
+              <?php
+                }else if(isset($_GET['login']) && $_GET['login'] == 'erro2') {
+              ?>
+              <div class="text-danger text-center small mb-3">É necessário o login antes de acessar outras páginas.</div>
               <?php } ?>
 
               <button class="btn btn-lg btn-info btn-block mt-0" type="submit">Entrar</button>

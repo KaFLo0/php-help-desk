@@ -1,3 +1,5 @@
+<?php require_once("./validador_acesso.php") ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,20 +18,28 @@
 
 <body>
 
-  <?php
-    $var = 1; 
-  ?>
-
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a href="#top" class="navbar-brand">
         <img src="assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
         App Help Desk
       </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="logoff.php" class="nav-link" title="Encerrar sessão">
+            SAIR
+          </a>
+        </li>
+      </ul>
     </nav>
   </header>
 
   <div class="container">
+
+    <header class="row">
+      <h2 class="display-6 mt-4">Abra ou consulte os seus chamados através do menu:</h2>
+    </header>
+
     <div class="row">
       <div class="card-padrao">
 
@@ -38,10 +48,14 @@
           <div class="card-body">
             <div class="row">
               <div class="col-6 d-flex justify-content-center">
-                <img src="assets/formulario_abrir_chamado.png" alt="Imagem do formulário para abrir um chamado">
+                <a href="./abrir_chamado.php" title="Abrir chamado">
+                  <img src="assets/formulario_abrir_chamado.png" alt="Imagem do formulário para abrir um chamado">
+                </a>
               </div>
               <div class="col-6 d-flex justify-content-center">
-                <img src="assets/formulario_consultar_chamado.png" alt="Imagem do formulário para consultar um chamado">
+                <a href="./consultar_chamado.php" title="Consultar chamado">
+                  <img src="assets/formulario_consultar_chamado.png" alt="Imagem do formulário para consultar um chamado">
+                </a>
               </div>
             </div>
           </div>

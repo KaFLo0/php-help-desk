@@ -1,3 +1,5 @@
+<?php require_once("./validador_acesso.php") ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,20 +18,28 @@
 
 <body>
 
-  <?php
-    $var = 1; 
-  ?>
-
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a href="#top" class="navbar-brand">
         <img src="assets/logo.png" class="d-inline-block align-top" alt="Logo da página">
         App Help Desk
       </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="logoff.php" class="nav-link" title="Encerrar sessão">
+            SAIR
+          </a>
+        </li>
+      </ul>
     </nav>
   </header>
 
   <div class="container">
+
+    <header class="row">
+      <h2 class="display-4 mt-4">Consulta de chamados:</h2>
+    </header>
+
     <div class="row">
       <div class="card-padrao">
 
@@ -55,7 +65,7 @@
 
           <div class="row mt-5">
             <div class="col-6">
-              <button type="submit" class="btn btn-lg btn-warning btn-block">Voltar</button>
+              <a class="btn btn-lg btn-warning btn-block" href="./home.php">Voltar</a>
             </div>
           </div>
 
