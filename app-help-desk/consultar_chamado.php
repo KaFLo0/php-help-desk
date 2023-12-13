@@ -1,7 +1,7 @@
 <?php require_once("./validador_acesso.php"); ?>
 <?php
   // Abrir o arquivo
-  $arquivo = fopen('arquivo.hd', 'r');
+  $arquivo = fopen('../../app_help_desk/arquivo.hd', 'r');
 
   $chamados = array();
 
