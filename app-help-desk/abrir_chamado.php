@@ -43,49 +43,55 @@
     <div class="row">
       <div class="card-padrao">
 
-      <div class="card">
-        <div class="card-header">Abertura de chamado</div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <form>
-                <div class="form-group">
-                  <label for="">Título</label>
-                  <input type="text" placeholder="Título" class="form-control">
-                </div>
-
-                <div class="form-group">
-                  <label for="">Categoria</label>
-                  <select class="form-control">
-                    <option value="">Criação Usuário</option>
-                    <option value="">Impressora</option>
-                    <option value="">Hardware</option>
-                    <option value="">Software</option>
-                    <option value="">Rede</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Descrição</label>
-                  <textarea rows="3" class="form-control"></textarea>
-                </div>
-
-                <div class="row mt-5">
-                  <div class="col-6">
-                    <a class="btn btn-lg btn-warning btn-block" href="./home.php">Voltar</a>
+        <div class="card">
+          <div class="card-header">Abertura de chamado</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <form method="post" action="registra_chamado.php">
+                  <div class="form-group">
+                    <label for="">Título</label>
+                    <input onkeypress="evitarQuebra()" name="titulo_chamado" type="text" required placeholder="Título" class="form-control">
                   </div>
-                  <div class="col-6">
-                    <button class="btn btn-lg btn-info btn-block" type="submit">Abrir</button>
+
+                  <div class="form-group">
+                    <label for="">Categoria</label>
+                    <select name="categoria_chamado" class="form-control">
+                      <option>Criação Usuário</option>
+                      <option>Impressora</option>
+                      <option>Hardware</option>
+                      <option>Software</option>
+                      <option>Rede</option>
+                    </select>
                   </div>
-                </div>
-              </form>
+
+                  <div class="form-group">
+                    <label for="">Descrição</label>
+                    <textarea required onkeypress="evitarQuebra()" name="descricao_chamado" rows="3" class="form-control"></textarea>
+                  </div>
+
+                  <div class="row mt-5">
+                    <div class="col-6">
+                      <a class="btn btn-lg btn-warning btn-block" href="./home.php">Voltar</a>
+                    </div>
+                    <div class="col-6">
+                      <button class="btn btn-lg btn-info btn-block" type="submit">Abrir</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       </div>
     </div>
+
+    <?php if(isset($_GET['redirect']) && $_GET['redirect'] == 'sucesso') { ?>
+      <div class="row">
+        <p class="lead text-success">Chamado registrado com sucesso!</p>
+      </div>
+    <?php } ?>
   </div>
 
   <footer class="mt-auto">
@@ -111,6 +117,17 @@
       </ul>
     </nav>
   </footer>
+
+  <!-- Função para evitar envio de quebra de linha no formulário -->
+  <script>
+      function evitarQuebra(e){
+        document.addEventListener('keypress', (event) => {
+          if(event.key == 'Enter'){
+            event.preventDefault()
+          }
+        })
+      }
+  </script>
 
 </body>
 

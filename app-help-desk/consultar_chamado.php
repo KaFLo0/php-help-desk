@@ -1,4 +1,29 @@
-<?php require_once("./validador_acesso.php") ?>
+<?php require_once("./validador_acesso.php"); ?>
+<?php
+  // Abrir o arquivo
+  $arquivo = fopen('arquivo.hd', 'r');
+
+  $chamados = array();
+
+  // Enquanto houver registros(linhas) a serem recuperados
+  while(!feof($arquivo)) {
+    $registro = fgets($arquivo);
+    if(substr_count($registro, '#') < 3) {
+      continue;
+    }
+    if($_SESSION['perfil_ID'] == 2) {
+      if($registro[0] == $_SESSION['ID']) {
+        $chamados[] = $registro;
+        continue;
+      }
+    }else {
+      $chamados[] = $registro;
+    }
+  }
+
+  // Fechar o arquivo
+  fclose($arquivo);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -47,21 +72,17 @@
         <div class="card-header">Consulta de chamado</div>
         <div class="card-body">
 
-          <div class="card mb-3 bg-light">
-            <div class="card-body">
-              <h5 class="card-title">Título do chamado...</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-              <p class="card-text">Descrição do chamado...</p>
+          <?php foreach($chamados as $chamado) { 
+              $chamado_dados = explode('#', $chamado);
+            ?>
+            <div class="card mb-3 bg-light">
+              <div class="card-body">
+                <h5 class="card-title"><?= $chamado_dados[1] ?></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
+                <p class="card-text"><?= $chamado_dados[3] ?></p>
+              </div>
             </div>
-          </div>
-
-          <div class="card mb-3 bg-light">
-            <div class="card-body">
-              <h5 class="card-title">Título do chamado...</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-              <p class="card-text">Descrição do chamado...</p>
-            </div>
-          </div>
+          <?php } ?>
 
           <div class="row mt-5">
             <div class="col-6">
