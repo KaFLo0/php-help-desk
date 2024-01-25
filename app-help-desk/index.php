@@ -2,9 +2,9 @@
   define('MAIN_PATH', 'http://localhost/app-help-desk');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
-<head lang="pt-br">
+<head>
   <!-- Essential metadatas -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
